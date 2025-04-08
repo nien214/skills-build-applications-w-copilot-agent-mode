@@ -8,10 +8,15 @@ backend_path = Path(__file__).resolve().parent.parent.parent
 if str(backend_path) not in sys.path:
     sys.path.insert(0, str(backend_path))  # Use insert(0) to prioritize this path
 
+# Add the project root directory to sys.path to resolve imports
+project_root = backend_path.parent
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
 # Add the octofit_tracker directory to sys.path to resolve imports
 octofit_tracker_path = backend_path / 'octofit_tracker'
 if str(octofit_tracker_path) not in sys.path:
-    sys.path.insert(0, str(octofit_tracker_path))
+    sys.path.append(str(octofit_tracker_path))  # Use append to avoid conflicts
 
 # Ensure the Django settings module is set before importing models
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'octofit_tracker.settings')
