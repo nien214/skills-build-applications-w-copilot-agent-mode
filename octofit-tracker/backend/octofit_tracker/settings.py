@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-)#gffqb0x^i3t*6527w8-4heo^k&@kqup3f2_r9sycws+b4l24
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "literate-lamp-97w767q6wp46279q9-8000.app.github.dev"]
 
 
 # Application definition
