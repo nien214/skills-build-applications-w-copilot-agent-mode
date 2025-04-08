@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     "octofit_tracker",  # Add the app itself
 ]
 
+# Add djongo to the installed apps if not already present
+INSTALLED_APPS += ["djongo"]
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
