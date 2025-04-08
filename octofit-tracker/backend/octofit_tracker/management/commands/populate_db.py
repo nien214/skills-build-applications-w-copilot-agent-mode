@@ -26,7 +26,7 @@ from django.core.management.base import BaseCommand
 from octofit_tracker.models import Team, Activity, Leaderboard, Workout, User  # Use the custom User model
 from django.conf import settings
 from pymongo import MongoClient
-from datetime import timedelta
+from datetime import timedelta, date
 from bson import ObjectId
 
 class Command(BaseCommand):
@@ -70,11 +70,11 @@ class Command(BaseCommand):
 
             # Create activities
             activities = [
-                Activity.objects.create(user=users[0], activity_type='Cycling', duration=60),
-                Activity.objects.create(user=users[1], activity_type='Crossfit', duration=120),
-                Activity.objects.create(user=users[2], activity_type='Running', duration=90),
-                Activity.objects.create(user=users[3], activity_type='Strength', duration=30),
-                Activity.objects.create(user=users[4], activity_type='Swimming', duration=75),
+                Activity.objects.create(user=users[0], activity_type='Cycling', duration=60, date=date(2025, 4, 1)),
+                Activity.objects.create(user=users[1], activity_type='Crossfit', duration=120, date=date(2025, 4, 2)),
+                Activity.objects.create(user=users[2], activity_type='Running', duration=90, date=date(2025, 4, 3)),
+                Activity.objects.create(user=users[3], activity_type='Strength', duration=30, date=date(2025, 4, 4)),
+                Activity.objects.create(user=users[4], activity_type='Swimming', duration=75, date=date(2025, 4, 5)),
             ]
 
             # Create leaderboard entries
@@ -99,4 +99,5 @@ class Command(BaseCommand):
         except Exception as e:
             self.stderr.write(self.style.ERROR(f'Error populating the database: {e}'))
         finally:
-            client.close()
+            if 'client' in locals():
+                client.close()

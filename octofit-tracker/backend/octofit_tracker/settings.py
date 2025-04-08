@@ -89,6 +89,13 @@ DATABASES = {
     }
 }
 
+# Add MongoDB settings
+MONGO_DATABASES = {
+    'HOST': 'localhost',
+    'PORT': 27017,
+    'NAME': 'octofit_db',
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
