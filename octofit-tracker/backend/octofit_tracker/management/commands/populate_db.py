@@ -51,13 +51,13 @@ class Command(BaseCommand):
             # Clear existing users to avoid duplicate key errors
             User.objects.all().delete()
 
-            # Create users
+            # Create users with passwords
             users = [
-                User.objects.create(email='thundergod@mhigh.edu', name='thundergod', age=25),
-                User.objects.create(email='metalgeek@mhigh.edu', name='metalgeek', age=22),
-                User.objects.create(email='zerocool@mhigh.edu', name='zerocool', age=20),
-                User.objects.create(email='crashoverride@mhigh.edu', name='crashoverride', age=23),
-                User.objects.create(email='sleeptoken@mhigh.edu', name='sleeptoken', age=21),
+                User.objects.create_user(email='thundergod@mhigh.edu', name='thundergod', age=25, password='password123'),
+                User.objects.create_user(email='metalgeek@mhigh.edu', name='metalgeek', age=22, password='password123'),
+                User.objects.create_user(email='zerocool@mhigh.edu', name='zerocool', age=20, password='password123'),
+                User.objects.create_user(email='crashoverride@mhigh.edu', name='crashoverride', age=23, password='password123'),
+                User.objects.create_user(email='sleeptoken@mhigh.edu', name='sleeptoken', age=21, password='password123'),
             ]
 
             # Create teams

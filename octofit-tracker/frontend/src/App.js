@@ -5,6 +5,7 @@ import Leaderboard from './components/Leaderboard';
 import Teams from './components/Teams';
 import Users from './components/Users';
 import Workouts from './components/Workouts';
+import Register from './components/Register';
 import './App.css';
 
 function App() {
@@ -44,7 +45,18 @@ function App() {
           <Route path="/teams" element={<Teams />} />
           <Route path="/users" element={<Users />} />
           <Route path="/workouts" element={<Workouts />} />
-          <Route path="/" element={<h1>Welcome to OctoFit Tracker</h1>} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/"
+            element={
+              <div>
+                <h1>Welcome to OctoFit Tracker</h1>
+                <Link to="/register">
+                  <button className="btn btn-primary mt-3">Sign Up</button>
+                </Link>
+              </div>
+            }
+          />
         </Routes>
       </div>
     </div>

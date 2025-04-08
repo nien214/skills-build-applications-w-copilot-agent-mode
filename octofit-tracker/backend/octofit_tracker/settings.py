@@ -45,6 +45,11 @@ INSTALLED_APPS = [
 # Add djongo to the installed apps if not already present
 INSTALLED_APPS += ["djongo"]
 
+# Add 'rest_framework.authtoken' to installed apps
+INSTALLED_APPS += [
+    'rest_framework.authtoken',
+]
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -142,3 +147,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 CORS_ALLOW_HEADERS = ["*",]
+
+# Configure REST framework authentication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
+
+# Use the custom User model
+AUTH_USER_MODEL = 'octofit_tracker.User'
+
+# Configure authentication backends to use email
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]

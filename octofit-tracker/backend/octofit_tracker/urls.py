@@ -17,7 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
 from . import views
+from .views import personalized_workouts
 
 # Create a router and register our viewsets with it
 router = DefaultRouter()
@@ -32,4 +34,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('', views.api_root, name='api-root'),
+]
+
+# Add authentication endpoints
+urlpatterns += [
+    path('api/auth/login/', obtain_auth_token, name='api_token_auth'),
+]
+
+# Add personalized workout suggestions endpoint
+urlpatterns += [
+    path('api/workouts/suggestions/', personalized_workouts, name='personalized_workouts'),
 ]

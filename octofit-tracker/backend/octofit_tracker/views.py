@@ -11,6 +11,20 @@ def api_root(request):
         "url": "https://literate-lamp-97w767q6wp46279q9-8000.app.github.dev"
     })
 
+@api_view(['GET'])
+def personalized_workouts(request):
+    user = request.user
+    if not user.is_authenticated:
+        return Response({'error': 'Authentication required'}, status=401)
+
+    # Example logic for personalized suggestions
+    suggestions = [
+        {'name': 'Morning Yoga', 'duration': '30 mins', 'calories': 150},
+        {'name': 'Evening Run', 'duration': '45 mins', 'calories': 400},
+    ]
+
+    return Response({'workout_suggestions': suggestions})
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
