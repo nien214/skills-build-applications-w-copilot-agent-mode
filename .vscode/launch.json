@@ -8,6 +8,15 @@
       "program": "${workspaceFolder}/octofit-tracker/backend/manage.py",
       "args": ["runserver", "0.0.0.0:8000"],
       "django": true
+    },
+    {
+      "name": "Run React Frontend",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/octofit-tracker/frontend/node_modules/react-scripts/bin/react-scripts.js",
+      "args": ["start"],
+      "cwd": "${workspaceFolder}/octofit-tracker/frontend",
+      "console": "integratedTerminal"
     }
   ]
 }
